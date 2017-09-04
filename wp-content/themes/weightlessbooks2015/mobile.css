@@ -1,21 +1,25 @@
+@media screen and (min-width: 801px) {
+  .mobile-nav-label-wrap,
+  #mobile-nav {
+    display: none;
+    visibility: hidden;
+  }
+}
+
 @media screen and (max-width: 800px) {
   * {
     box-sizing: border-box;
     max-width: 100%;
   }
 
-  #sidebar .menu.active ul.menu_body {
-    margin: 0 !important;
-    width: 100vw;
-  }
-
-
-  #sidebar li.menu:not(.active) {
-
+  label > * {
+    pointer-events: none;
+    user-select: none;
   }
 
   #content {
     display: flex;
+    flex-wrap: wrap;
   }
 
   #content .cover + h2,
@@ -44,9 +48,79 @@
     font-size: 18px;
   }
 
+  /******************
+       SIDEBAR
+  *******************/
+
   #sidebar {
     order: 1;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    width: 100vw;
+    height: 82vh;
+    top: 18vh;
+    left: 0;
+    background: rgba(0, 0, 0, .8);
+    margin: 0;
+    padding: 10px;
+    transition: 0.3s opacity, visibility;
+  }
+
+  #sidebar p {
+    color: #fffffa;
+  }
+
+  #sidebar > ul > li > a,
+  #sidebar li h4 > a,
+  #sidebar p a,
+  #sidebar a[rel*='author'] {
+    color: white;
+    text-decoration: underline;
+  }
+
+  #sidebar .menu.active ul.menu_body {
+    margin: 0 !important;
+    width: 100vw;
+  }
+
+  /* -- end SIDEBAR */
+
+  /******************
+      MOBILE NAV
+  *******************/
+
+  .mobile-nav-label-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+
+  #mobile-nav:checked ~ #sidebar {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  label[for='mobile-nav'] {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  #mobile-nav {
     display: none;
+  }
+
+  .mobile-nav-text {
+    font-size: 11px;
+  }
+
+  /* -- end MOBILE NAV */
+
+  .shopping_cart {
+    font-size: 12px;
+    margin-bottom: 20px;
   }
 
   #maincolumn-right {
@@ -74,8 +148,7 @@
     min-width: auto;
   }
 
-  .floatinglist .publisher,
-  input#searchfield {
+  .floatinglist .publisher {
     width: auto;
   }
 
@@ -142,7 +215,7 @@
 
   #content .floatinglist .cover {
     width: auto;
-    padding: 20px;
+    padding: 15px 10px;
   }
 
 
@@ -182,6 +255,7 @@
 
   #searchform {
     margin: 0 !important;
+    text-align: left;
   }
 
   #searchform h3 {
@@ -203,6 +277,8 @@
   #header {
     justify-content: space-around;
     display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
   }
 
   #logo {
@@ -328,6 +404,33 @@
   .single-post #content .related img {
     padding-bottom: 5px;
   }
+
+  /******************
+        Category
+  *******************/
+
+  .category .navigation h2 {
+    float: none;
+    padding: 0 0 10px 10px;
+    font-weight: normal;
+  }
+
+  .category .navigation form.sort_options {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .category .navigation form.sort_options select {
+    flex: 1;
+    margin: 0 5px;
+    max-width: 200px;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 5px;
+  }
 }
 
 
@@ -350,8 +453,30 @@
     width: 100% !important;
   }
 
-  input#searchfield {
-    width: 0;
-    padding-left: 26px;
+  #searchform {
+    width: 100%;
   }
+
+  input#searchfield {
+    width: calc(100% - 43px);
+    margin-left: 0;
+  }
+
+  /******************
+       MOBILE NAV
+  *******************/
+
+  .mobile-nav-label-wrap {
+    padding-right: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  #sidebar {
+    height: 80vh;
+    top: 20vh;
+  }
+
+  /* -- end MOBILE NAV */
 }
